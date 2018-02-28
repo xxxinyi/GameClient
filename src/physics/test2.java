@@ -11,4 +11,5 @@ package physics;
  */
 public class test2 {
     public String test;
+    public int anothertest = 1;
 }
