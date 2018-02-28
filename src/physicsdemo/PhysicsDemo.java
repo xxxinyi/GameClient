@@ -51,7 +51,7 @@ public class PhysicsDemo extends Application {
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException ex) {
-
+                    ex.printStackTrace();
                 }
             }
         }).start();
