@@ -10,5 +10,5 @@ package physics;
  * @author Xinyi
  */
 public class test2 {
-    
+    public String test;
 }
