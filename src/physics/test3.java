@@ -10,5 +10,5 @@ package physics;
  * @author Xinyi
  */
 public class test3 {
-    
+    public int ii = 1;
 }
