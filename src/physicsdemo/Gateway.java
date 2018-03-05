@@ -36,8 +36,9 @@ public class Gateway implements Game.GameConstants {
        outputToServer.flush();
    }
    
-   public void sendControl(int c){
+   public void sendControl(String handle, int c){
        outputToServer.println(SEND_CONTROL);
+       outputToServer.println(handle);
        outputToServer.println(c);
        outputToServer.flush();
    }

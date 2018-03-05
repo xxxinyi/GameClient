@@ -5,18 +5,29 @@
  */
 package physicsdemo;
 
+import java.util.Optional;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import simulation.Simulation;
 
 public class PhysicsDemo extends Application {
     
    private Gateway gateway;
+   private String handle;
     @Override
     public void start(Stage primaryStage) {
         gateway = new Gateway();
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Start Chat");
+        dialog.setHeaderText(null);
+        dialog.setContentText("Enter a handle:");
+
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(handle -> gateway.sendHandle(handle));
+        
         GamePane root = new GamePane();
         Simulation sim = new Simulation(300, 250, 2, 2);
         root.setShapes(sim.setUpShapes());
@@ -25,16 +36,16 @@ public class PhysicsDemo extends Application {
         root.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case DOWN:
-                    gateway.sendControl(1);
+                    gateway.sendControl(handle, 1);
                     break;
                 case UP:
-                    gateway.sendControl(2);
+                    gateway.sendControl(handle, 2);
                     break;
                 case LEFT:
-                    gateway.sendControl(3);
+                    gateway.sendControl(handle, 3);
                     break;
                 case RIGHT:
-                    gateway.sendControl(4);
+                    gateway.sendControl(handle, 4);
                     break;
             }
         });
